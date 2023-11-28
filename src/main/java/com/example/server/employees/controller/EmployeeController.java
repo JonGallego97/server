@@ -3,7 +3,6 @@ package com.example.server.employees.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -66,7 +65,7 @@ public class EmployeeController {
 	
 	private Employee convertEmployeeResponsetoEmployee(EmployeeResponse employeeResponse) {
 		
-		Employee employee = new Employee(employeeResponse.getId(), employeeResponse.getName(), employeeResponse.getPosition(), employeeResponse.getSalary());
+		Employee employee = new Employee(null,employeeResponse.getName(), employeeResponse.getPosition(), employeeResponse.getSalary());
 		return employee;
 		
 	}

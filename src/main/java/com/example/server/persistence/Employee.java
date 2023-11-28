@@ -1,10 +1,9 @@
 package com.example.server.persistence;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -28,12 +27,36 @@ public class Employee {
 	private String position;
 	@Column
 	private Integer salary;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="bossid",foreignKey = @ForeignKey(name="Fk_boss_id"))
+	@JoinColumn(name ="bossId",foreignKey = @ForeignKey(name="Fk_boss_id"))
 	@JsonManagedReference
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Employee boss;
+
+	@Column(name="bossId", updatable= false, insertable=false)
+	private Integer boss_id;
+
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="department_id",foreignKey = @ForeignKey(name="fk_departmentId"))
+	@JsonManagedReference
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	private Department department;
+	
+	@Column(name="department_id", updatable= false, insertable=false)
+	private Integer departmentId;
+
+	
+	public Employee(Integer id, String name, String position, Integer salary, Integer boss_id, Integer departmentId) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.position = position;
+		this.salary = salary;
+		this.boss_id = boss_id;
+		this.departmentId = departmentId;
+	}
 	public Employee getBoss() {
 		return boss;
 	}
@@ -82,9 +105,9 @@ public class Employee {
 	public void setSalary(Integer salary) {
 		this.salary = salary;
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 }
