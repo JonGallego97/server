@@ -2,23 +2,22 @@ package com.example.server.departments.repository;
 
 import java.util.List;
 
-import com.example.server.persistence.Employee;
+import com.example.server.employees.controller.EmployeeResponse;
 
 public class DepartmentResponse {
 	private Integer id;
 	private String name;
 	private String city;
-	private List<Employee> listEmployees;
-	public DepartmentResponse(Integer id, String name, String city, List<Employee> listEmployees) {
+	private List<EmployeeResponse> listEmployees;
+	public DepartmentResponse(Integer id, String name, String city, List<EmployeeResponse> listEmployees) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.city = city;
 		this.listEmployees = listEmployees;
 	}
-	public DepartmentResponse(Integer id, String name, String city) {
+	public DepartmentResponse(String name, String city) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.city = city;
 	}
@@ -43,10 +42,10 @@ public class DepartmentResponse {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public List<Employee> getListEmployees() {
+	public List<EmployeeResponse> getListEmployees() {
 		return listEmployees;
 	}
-	public void setListEmployees(List<Employee> listEmployees) {
+	public void setListEmployees(List<EmployeeResponse> listEmployees) {
 		this.listEmployees = listEmployees;
 	}
 
