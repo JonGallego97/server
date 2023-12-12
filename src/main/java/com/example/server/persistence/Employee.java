@@ -29,12 +29,12 @@ public class Employee {
 	private Integer salary;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="bossId",foreignKey = @ForeignKey(name="Fk_boss_id"))
+	@JoinColumn(name ="boss_id",foreignKey = @ForeignKey(name="Fk_boss_id"))
 	@JsonManagedReference
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Employee boss;
 
-	@Column(name="bossId", updatable= false, insertable=false)
+	@Column(name="boss_id", updatable= false, insertable=false)
 	private Integer boss_id;
 
 	
@@ -45,7 +45,7 @@ public class Employee {
 	private Department department;
 	
 	@Column(name="department_id", updatable= false, insertable=false)
-	private Integer departmentId;
+	private Integer department_id;
 
 	
 	public Employee(Integer id, String name, String position, Integer salary, Integer boss_id, Integer departmentId) {
@@ -55,7 +55,16 @@ public class Employee {
 		this.position = position;
 		this.salary = salary;
 		this.boss_id = boss_id;
-		this.departmentId = departmentId;
+		this.department_id = departmentId;
+	}
+	
+	public Employee(String name, String position, Integer salary, Integer boss_id, Integer department_id) {
+		super();
+		this.name = name;
+		this.position = position;
+		this.salary = salary;
+		this.boss_id = boss_id;
+		this.department_id = department_id;
 	}
 	public Employee getBoss() {
 		return boss;
@@ -63,14 +72,8 @@ public class Employee {
 	public void setBoss(Employee boss) {
 		this.boss = boss;
 	}
-	public Employee(Integer id, String name, String position, Integer salary, Employee boss) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.position = position;
-		this.salary = salary;
-		this.boss = boss;
-	}
+
+	
 	public Employee(Integer id, String name, String position, Integer salary) {
 		super();
 		this.id = id;

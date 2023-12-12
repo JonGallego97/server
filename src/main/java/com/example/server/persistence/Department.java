@@ -28,6 +28,7 @@ public class Department {
 	@OneToMany(mappedBy="department",cascade = CascadeType.ALL , orphanRemoval = true, fetch = FetchType.LAZY)
 	@JsonBackReference
 	private List<Employee> employees;
+	
 	public Department(Integer id, String name, String city, List<Employee> employees) {
 		super();
 		this.id = id;

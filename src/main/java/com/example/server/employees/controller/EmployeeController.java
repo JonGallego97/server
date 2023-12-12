@@ -65,7 +65,7 @@ public class EmployeeController {
 	
 	private Employee convertEmployeeResponsetoEmployee(EmployeeResponse employeeResponse) {
 		
-		Employee employee = new Employee(null,employeeResponse.getName(), employeeResponse.getPosition(), employeeResponse.getSalary());
+		Employee employee = new Employee(employeeResponse.getName(), employeeResponse.getPosition(), employeeResponse.getSalary(), employeeResponse.getBossId(),employeeResponse.getDepartmentId());
 		return employee;
 		
 	}
