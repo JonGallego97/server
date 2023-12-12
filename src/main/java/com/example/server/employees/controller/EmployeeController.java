@@ -167,8 +167,8 @@ public class EmployeeController {
 			employee.setName(employeeResponse.getName());
 		}
 		
-		Employee employee = new Employee(employeeResponse.getName(), employeeResponse.getPosition(), employeeResponse.getSalary(), employeeResponse.getBossId(),employeeResponse.getDepartmentId());
-		return employee;
+		//Employee employee = new Employee(employeeResponse.getName(), employeeResponse.getPosition(), employeeResponse.getSalary(), employeeResponse.getBossId(),employeeResponse.getDepartmentId());
+		//return employee;
 		
 		employee = employeeRepository.save(employee);
 		EmployeeServiceModel response = new EmployeeServiceModel(
