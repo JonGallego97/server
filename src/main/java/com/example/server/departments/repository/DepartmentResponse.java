@@ -3,6 +3,7 @@ package com.example.server.departments.repository;
 import java.util.List;
 
 import com.example.server.employees.controller.EmployeeResponse;
+import com.example.server.persistence.Employee;
 
 public class DepartmentResponse {
 	private Integer id;

@@ -51,7 +51,7 @@ public class Employee {
 	private Department department;
 	
 	@Column(name="department_id", updatable= false, insertable=false)
-	private Integer departmentId;
+	private Integer department_id;
 
 	
 	public Employee(Integer id, String name, String position, Integer salary, Integer bossId, Integer departmentId) {
@@ -60,11 +60,10 @@ public class Employee {
 		this.name = name;
 		this.position = position;
 		this.salary = salary;
-		this.bossId = bossId;
+    this.bossId = bossId;
 		this.departmentId = departmentId;
+
 	}
-	
-	
 	public Employee(String name, String position, Integer salary, Employee boss, Department department) {
 		super();
 		this.name = name;
