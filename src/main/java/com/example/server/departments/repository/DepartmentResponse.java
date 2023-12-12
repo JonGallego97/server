@@ -17,9 +17,8 @@ public class DepartmentResponse {
 		this.city = city;
 		this.listEmployees = listEmployees;
 	}
-	public DepartmentResponse(Integer id, String name, String city) {
+	public DepartmentResponse(String name, String city) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.city = city;
 	}

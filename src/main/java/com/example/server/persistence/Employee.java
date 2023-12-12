@@ -1,6 +1,5 @@
 package com.example.server.persistence;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -35,9 +34,16 @@ public class Employee {
 	private Employee boss;
 
 	@Column(name="boss_id", updatable= false, insertable=false)
-	private Integer boss_id;
+	private Integer bossId;
 
 	
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="department_id",foreignKey = @ForeignKey(name="fk_departmentId"))
 	@JsonManagedReference
@@ -48,23 +54,32 @@ public class Employee {
 	private Integer department_id;
 
 	
-	public Employee(Integer id, String name, String position, Integer salary, Integer boss_id, Integer departmentId) {
+	public Employee(Integer id, String name, String position, Integer salary, Integer bossId, Integer departmentId) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.position = position;
 		this.salary = salary;
-		this.boss_id = boss_id;
-		this.department_id = departmentId;
+    this.bossId = bossId;
+		this.departmentId = departmentId;
+
 	}
-	
-	public Employee(String name, String position, Integer salary, Integer boss_id, Integer department_id) {
+	public Employee(String name, String position, Integer salary, Employee boss, Department department) {
 		super();
 		this.name = name;
 		this.position = position;
 		this.salary = salary;
-		this.boss_id = boss_id;
-		this.department_id = department_id;
+		this.boss = boss;
+		this.department = department;
+	}
+
+	public Employee(String name, String position, Integer salary, Integer bossId, Integer departmentId) {
+		super();
+		this.name = name;
+		this.position = position;
+		this.salary = salary;
+		this.bossId = bossId;
+		this.departmentId = departmentId;
 	}
 	public Employee getBoss() {
 		return boss;
@@ -107,6 +122,22 @@ public class Employee {
 	}
 	public void setSalary(Integer salary) {
 		this.salary = salary;
+	}
+
+	public Integer getBossId() {
+		return bossId;
+	}
+
+	public void setBossId(Integer bossId) {
+		this.bossId = bossId;
+	}
+
+	public Integer getDepartmentId() {
+		return departmentId;
+	}
+
+	public void setDepartmentId(Integer departmentId) {
+		this.departmentId = departmentId;
 	}
 
 
